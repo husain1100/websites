@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+        <style>
+            .input_style{
+                padding: 10px;
+                width: 70%;
+                height: 40px;
+                margin-top: 50px;
+                margin-left: 50px;
+                margin-bottom: 50px;
+            }
+            .button_style{
+                padding: 10px;
+                width: 20%;
+                height: 40px;
+                background-color: grey;
+                color: black;
+            }
+            @media screen and (min-width: 200px) and (max-width: 600px) {
+                .button_style{
+                    margin-left: 25%;
+                    width: 150px;
+                    margin-bottom: 50px;
+                }
+            }
+            table{
+                width: 100%;
+                padding: 10px;
+                text-align: center;
+            }
+        </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    
+        <h1 style="text-align: center; background-color: cyan; color: white; padding: 15px;">Todo List</h1>
+            <input class="input_style" type="text" id="title" placeholder="enter the items">
+            <button class="button_style" type="submit" id="addbtn" onclick="submit_btn()">Add</button>
+        
+        
+
+    <div id="text">
+
+    </div>
+
+    <script>
+       
+        var add = document.querySelector("#addbtn");
+    
+        add.addEventListener("click",()=>{
+            var text = document.getElementById("title").value;
+            if(text==" "){
+                alert("please enter items");
+            }
+            else{
+                // ACCESSING IMAGE
+                let img = document.querySelector("img");
+
+                // ACCESSING DIV
+                let div = document.querySelector("div");
+
+                // CREATING NEW DIV
+                var new_div = document.createElement("div");
+                new_div.style.backgroundColor = "red";
+                new_div.style.color = "white";
+                new_div.style.height = "60px";
+                new_div.style.width = "90%";
+                new_div.style.marginLeft = "10px";
+                new_div.style.marginRight = "10px";
+                new_div.style.marginBottom = "20px";
+                new_div.style.cursor = "pointer";
+                div.append(new_div);
+
+                // CREATING NEW LI ELEMENT
+                var li = document.createElement("li");
+                li.style.listStyle = "none";
+                li.style.lineHeight = "20px";
+
+                // USER INPUT
+                li.innerHTML = `${text}`;   
+                new_div.appendChild(li);
+                
+                // CREATING BUTTON 
+                var new_btn = document.createElement("button");
+                new_btn.innerHTML = "Delete";
+                new_btn.style.backgroundColor = "transparent";
+                new_btn.style.position = "absolute";    
+                new_btn.style.right = "30px";
+                new_btn.style.color = "white";
+                new_btn.style.border = "none";
+                new_div.appendChild(new_btn);
+
+                new_btn.addEventListener("click",()=>{
+                    new_div.innerHTML = "The Items Removed From the List";
+                    new_div.style.backgroundColor = "grey";
+                })
+                
+                document.querySelector("input").value = " ";
+            }
+        });
+
+        
+    </script>
+   
+</body>
+</html>
